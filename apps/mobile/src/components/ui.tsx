@@ -19,7 +19,7 @@ export function AppTitle({ eyebrow, title, subtitle }: { eyebrow?: string; title
 }
 
 export function PrimaryButton({ label, onPress, tone = 'primary', disabled = false }: { label: string; onPress: () => void; tone?: 'primary' | 'outline' | 'danger'; disabled?: boolean }) {
-  const buttonStyle: ViewStyle[] = [styles.button, tone === 'primary' && styles.primaryButton, tone === 'outline' && styles.outlineButton, tone === 'danger' && styles.dangerButton, disabled && styles.disabled];
+  const buttonStyle = [styles.button, tone === 'primary' && styles.primaryButton, tone === 'outline' && styles.outlineButton, tone === 'danger' && styles.dangerButton, disabled && styles.disabled];
   const textStyle = tone === 'outline' ? styles.outlineButtonText : styles.buttonText;
   return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={({ pressed }) => [...buttonStyle, pressed && styles.pressed]}>
     <Text style={textStyle}>{label}</Text>

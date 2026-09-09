@@ -1,0 +1,45 @@
+# JavaScript and TypeScript
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# Expo and React Native
+.expo/
+.expo-shared/
+web-build/
+dist/
+android/
+ios/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+service-account*.json
+
+# Test and build output
+coverage/
+build/
+
+# Editor and operating system files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+

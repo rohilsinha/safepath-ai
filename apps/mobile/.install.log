@@ -1,0 +1,100 @@
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 87, reused 82, downloaded 0, added 0
+Progress: resolved 87, reused 86, downloaded 0, added 0
+Progress: resolved 88, reused 86, downloaded 0, added 0
+Progress: resolved 236, reused 189, downloaded 11, added 0
+[WARN] Tarball download average speed 42 KiB/s (size 50 KiB) is below 50 KiB/s: https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz (GET)
+Progress: resolved 249, reused 189, downloaded 30, added 0
+[WARN] Tarball download average speed 10 KiB/s (size 10 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro-transform-worker/-/metro-transform-worker-0.84.5.tgz (GET)
+[WARN] Tarball download average speed 7 KiB/s (size 8 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro-core/-/metro-core-0.84.6.tgz (GET)
+[WARN] Tarball download average speed 22 KiB/s (size 38 KiB) is below 50 KiB/s: https://registry.npmjs.org/@react-native/dev-middleware/-/dev-middleware-0.86.3.tgz (GET)
+Progress: resolved 253, reused 189, downloaded 43, added 0
+[WARN] Tarball download average speed 1 KiB/s (size 4 KiB) is below 50 KiB/s: https://registry.npmjs.org/babel-plugin-react-native-web/-/babel-plugin-react-native-web-0.21.2.tgz (GET)
+Progress: resolved 254, reused 189, downloaded 46, added 0
+[WARN] Tarball download average speed 20 KiB/s (size 85 KiB) is below 50 KiB/s: https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz (GET)
+[WARN] Tarball download average speed 8 KiB/s (size 29 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro-symbolicate/-/metro-symbolicate-0.84.6.tgz (GET)
+Progress: resolved 256, reused 189, downloaded 49, added 0
+Progress: resolved 258, reused 189, downloaded 51, added 0
+Progress: resolved 259, reused 190, downloaded 51, added 0
+[WARN] Tarball download average speed 0 KiB/s (size 2 KiB) is below 50 KiB/s: https://registry.npmjs.org/ob1/-/ob1-0.84.6.tgz (GET)
+Progress: resolved 259, reused 190, downloaded 55, added 0
+[WARN] Tarball download average speed 4 KiB/s (size 30 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro-resolver/-/metro-resolver-0.84.5.tgz (GET)
+Progress: resolved 259, reused 190, downloaded 57, added 0
+[WARN] Tarball download average speed 23 KiB/s (size 220 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro/-/metro-0.84.6.tgz (GET)
+Progress: resolved 259, reused 190, downloaded 58, added 0
+Progress: resolved 259, reused 190, downloaded 59, added 0
+[WARN] Tarball download average speed 20 KiB/s (size 434 KiB) is below 50 KiB/s: https://registry.npmjs.org/hermes-parser/-/hermes-parser-0.36.0.tgz (GET)
+Progress: resolved 259, reused 190, downloaded 60, added 0
+[WARN] Tarball download average speed 0 KiB/s (size 20 KiB) is below 50 KiB/s: https://registry.npmjs.org/@expo/image-utils/-/image-utils-0.11.5.tgz (GET)
+Progress: resolved 259, reused 190, downloaded 61, added 0
+[WARN] Tarball download average speed 0 KiB/s (size 23 KiB) is below 50 KiB/s: https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz (GET)
+Progress: resolved 259, reused 190, downloaded 62, added 0
+Progress: resolved 259, reused 190, downloaded 63, added 0
+Progress: resolved 259, reused 190, downloaded 64, added 0
+[WARN] GET https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-57.0.17.tgz error (23). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/fetch-nodeshim error (23). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/metro-transform-plugins/-/metro-transform-plugins-0.84.5.tgz error (23). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/multitars/-/multitars-1.0.2.tgz error (23). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/agent-cli-detector/-/agent-cli-detector-0.1.7.tgz error (23). Will retry in 10 seconds. 2 retries left.
+[WARN] GET https://registry.npmjs.org/lan-network/-/lan-network-0.2.1.tgz error (23). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 260, reused 190, downloaded 64, added 0
+Progress: resolved 273, reused 191, downloaded 65, added 0
+Progress: resolved 303, reused 200, downloaded 66, added 0
+Progress: resolved 323, reused 232, downloaded 67, added 0
+Progress: resolved 332, reused 243, downloaded 68, added 0
+Progress: resolved 344, reused 262, downloaded 68, added 0
+Progress: resolved 351, reused 274, downloaded 68, added 0
+Progress: resolved 353, reused 282, downloaded 68, added 0
+Progress: resolved 361, reused 290, downloaded 68, added 0
+Progress: resolved 371, reused 296, downloaded 68, added 0
+Progress: resolved 384, reused 298, downloaded 68, added 0
+Progress: resolved 401, reused 311, downloaded 68, added 0
+Progress: resolved 406, reused 324, downloaded 68, added 0
+Progress: resolved 411, reused 329, downloaded 68, added 0
+Progress: resolved 414, reused 332, downloaded 68, added 0
+Progress: resolved 415, reused 334, downloaded 68, added 0
+Progress: resolved 417, reused 337, downloaded 68, added 0
+Progress: resolved 419, reused 339, downloaded 68, added 0
+Progress: resolved 420, reused 339, downloaded 68, added 0
+Progress: resolved 440, reused 342, downloaded 68, added 0
+Progress: resolved 447, reused 362, downloaded 68, added 0
+Progress: resolved 458, reused 373, downloaded 69, added 0
+Progress: resolved 479, reused 391, downloaded 69, added 0
+Progress: resolved 488, reused 407, downloaded 69, added 0
+Progress: resolved 503, reused 409, downloaded 69, added 0
+Progress: resolved 519, reused 437, downloaded 69, added 0
+Progress: resolved 520, reused 439, downloaded 69, added 0
+Progress: resolved 533, reused 453, downloaded 69, added 0
+Progress: resolved 538, reused 455, downloaded 69, added 0
+Progress: resolved 539, reused 457, downloaded 69, added 0
+Progress: resolved 540, reused 457, downloaded 69, added 0
+[WARN] 1 deprecated subdependencies found: uuid@7.0.3
+Packages: +559
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 569, reused 489, downloaded 69, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: C:\Users\ASUS\AppData\Local\pnpm\store\v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 569, reused 489, downloaded 69, added 26
+Progress: resolved 569, reused 489, downloaded 69, added 56
+Progress: resolved 569, reused 489, downloaded 69, added 66
+Progress: resolved 569, reused 489, downloaded 69, added 70
+Progress: resolved 569, reused 489, downloaded 69, added 71
+Progress: resolved 569, reused 489, downloaded 69, added 72
+Progress: resolved 569, reused 489, downloaded 70, added 73, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+dependencies:
++ expo 57.0.21
++ expo-router 57.0.20
++ expo-status-bar 3.0.9 (57.0.1 is available)
++ react 19.2.3 (19.2.6 is available)
++ react-native 0.86.0 (0.87.1 is available)
++ react-native-safe-area-context 5.6.2 (5.9.1 is available)
++ react-native-screens 4.16.0 (4.27.0 is available)
+
+devDependencies:
++ @types/react 19.2.18
++ typescript 5.9.3 (7.0.2 is available)
+
+Done in 2m 6.9s using pnpm v11.19.0

@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "SafePath AI",
+    "slug": "safepath-ai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "plugins": ["expo-router"],
+    "scheme": "safepath",
+    "android": {
+      "package": "com.safepath.mobile"
+    },
+    "ios": {
+      "bundleIdentifier": "com.safepath.mobile"
+    }
+  }
+}

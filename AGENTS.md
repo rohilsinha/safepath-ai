@@ -34,6 +34,19 @@ Before implementing a feature:
 - Add tests for important backend, scoring, and emergency-workflow logic.
 - Preserve user privacy: collect the minimum location and personal data required, protect it in transit and at rest, and make retention rules explicit before storing sensitive data.
 
+## Package management
+
+- SafePath AI uses pnpm exclusively.
+- Use pnpm for installing, adding, removing, updating, and running JavaScript or TypeScript dependencies and scripts.
+- Do not use npm, npx, or yarn for project commands.
+- Use `pnpm install` instead of `npm install`.
+- Use `pnpm add <package>` instead of `npm install <package>`.
+- Use `pnpm remove <package>` instead of `npm uninstall <package>`.
+- Use `pnpm exec <command>` instead of `npx <command>`.
+- Use `pnpm run <script>` or the equivalent `pnpm <script>` for package scripts.
+- Keep the existing pnpm lockfile and do not create `package-lock.json` or `yarn.lock` files.
+- Do not change the package manager unless explicitly instructed by the user.
+
 ## Safety scoring and AI
 
 - A route safety score must come from structured, traceable evidence and a controlled scoring model.
@@ -46,4 +59,3 @@ Before implementing a feature:
 - Build only what the current task requests.
 - Do not create fake integrations, placeholder credentials, or simulated emergency delivery that could be mistaken for a real safety feature.
 - For maps, notifications, SMS, voice, or emergency escalation, state prerequisites and testable limitations before claiming the feature works.
-

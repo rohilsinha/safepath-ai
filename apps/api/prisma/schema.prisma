@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String             @id @default(uuid()) @db.Uuid
+  name              String
+  email             String             @unique
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  emergencyContacts EmergencyContact[]
+  safetyReports     SafetyReport[]
+  sosEvents         Sos[]
+}
+
+model EmergencyContact {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @db.Uuid
+  name         String
+  phone        String
+  relationship String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model SafetyReport {
+  id          String         @id @default(uuid()) @db.Uuid
+  userId      String?        @db.Uuid
+  latitude    Float
+  longitude   Float
+  description String
+  severity    ReportSeverity
+  createdAt   DateTime       @default(now())
+  user        User?          @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([severity, createdAt])
+}
+
+model Sos {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  latitude   Float
+  longitude  Float
+  status     SosStatus
+  createdAt  DateTime  @default(now())
+  resolvedAt DateTime?
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status, createdAt])
+}
+
+enum ReportSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum SosStatus {
+  ACTIVE
+  RESOLVED
+  CANCELLED
+}

@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "6.19.3",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "prisma": "6.19.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }

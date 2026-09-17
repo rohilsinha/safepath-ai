@@ -2,10 +2,17 @@ import { router } from 'expo-router';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { AppTitle, Card, PrimaryButton, Screen, SectionTitle } from '../../src/components/ui';
 import { colors } from '../../src/theme';
+import { useUser } from '../../src/user-context';
 
 export default function HomeScreen() {
-  return <Screen><View style={styles.top}><Text style={styles.logo}>SafePath</Text><Text accessibilityLabel="Profile" style={styles.profile}>AK</Text></View>
-    <AppTitle eyebrow="Good evening, Ananya" title="Where are you going?" subtitle="Plan with context, not just travel time." />
+  const { user } = useUser();
+  const displayName = user?.name?.trim() || undefined;
+  const initials = displayName
+    ? displayName.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase()
+    : 'SP';
+
+  return <Screen><View style={styles.top}><Text style={styles.logo}>SafePath</Text><Text accessibilityLabel="Profile" style={styles.profile}>{initials}</Text></View>
+    <AppTitle eyebrow={displayName ? `Good evening, ${displayName}` : 'Good evening'} title="Where are you going?" subtitle="Plan with context, not just travel time." />
     <Card><Text style={styles.locationLabel}>CURRENT LOCATION</Text><View style={styles.locationRow}><View style={styles.dot} /><View><Text style={styles.location}>Chennai Central</Text><Text style={styles.locationDetail}>Using a sample location</Text></View></View></Card>
     <View style={{ gap: 9 }}><Text style={styles.inputLabel}>Destination</Text><TextInput accessibilityLabel="Destination" placeholder="Search an area or landmark" placeholderTextColor="#7C8B91" style={styles.input} /><PrimaryButton label="Find safe routes" onPress={() => router.push('/route-search')} /></View>
     <View style={{ gap: 12 }}><SectionTitle title="Quick access" /><View style={styles.quickRow}><Card style={styles.quickCard}><Text style={styles.quickIcon}>⌁</Text><Text style={styles.quickTitle} onPress={() => router.push('/emergency-contacts')}>Emergency contacts</Text><Text style={styles.quickBody}>2 saved contacts</Text></Card><Card style={styles.quickCard}><Text style={styles.quickIcon}>↗</Text><Text style={styles.quickTitle} onPress={() => router.push('/route-results')}>Recent routes</Text><Text style={styles.quickBody}>View route previews</Text></Card></View></View>

@@ -27,6 +27,12 @@ export interface LoginResponse {
   };
 }
 
+export interface CurrentUserResponse {
+  id: string;
+  name: string;
+  email: string;
+}
+
 export class ApiError extends Error {
   constructor(
     public readonly status: number,
@@ -98,4 +104,37 @@ export async function login(data: LoginRequest): Promise<LoginResponse> {
   }
 
   return responseBody as LoginResponse;
+}
+
+export async function getCurrentUser(
+  accessToken: string,
+): Promise<CurrentUserResponse> {
+  let response: Response;
+
+  try {
+    response = await fetch(`${apiBaseUrl}/auth/me`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  } catch {
+    throw new Error('Unable to connect to SafePath. Check your connection and try again.');
+  }
+
+  let responseBody: { message?: string | string[] } | CurrentUserResponse | undefined;
+  try {
+    responseBody = (await response.json()) as
+      | { message?: string | string[] }
+      | CurrentUserResponse;
+  } catch {
+    responseBody = undefined;
+  }
+
+  if (!response.ok) {
+    const errorBody = responseBody as { message?: string | string[] } | undefined;
+    const message = Array.isArray(errorBody?.message)
+      ? errorBody.message.join(', ')
+      : errorBody?.message ?? 'Unable to restore your session. Please sign in again.';
+    throw new ApiError(response.status, message);
+  }
+
+  return responseBody as CurrentUserResponse;
 }

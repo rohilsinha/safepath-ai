@@ -5,7 +5,7 @@ import { colors } from '../../src/theme';
 import { useUser } from '../../src/user-context';
 
 export default function HomeScreen() {
-  const { user } = useUser();
+  const { user, logout } = useUser();
   const displayName = user?.name?.trim() || undefined;
   const initials = displayName
     ? displayName.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase()
@@ -17,6 +17,7 @@ export default function HomeScreen() {
     <View style={{ gap: 9 }}><Text style={styles.inputLabel}>Destination</Text><TextInput accessibilityLabel="Destination" placeholder="Search an area or landmark" placeholderTextColor="#7C8B91" style={styles.input} /><PrimaryButton label="Find safe routes" onPress={() => router.push('/route-search')} /></View>
     <View style={{ gap: 12 }}><SectionTitle title="Quick access" /><View style={styles.quickRow}><Card style={styles.quickCard}><Text style={styles.quickIcon}>⌁</Text><Text style={styles.quickTitle} onPress={() => router.push('/emergency-contacts')}>Emergency contacts</Text><Text style={styles.quickBody}>2 saved contacts</Text></Card><Card style={styles.quickCard}><Text style={styles.quickIcon}>↗</Text><Text style={styles.quickTitle} onPress={() => router.push('/route-results')}>Recent routes</Text><Text style={styles.quickBody}>View route previews</Text></Card></View></View>
     <PressableSos />
+    <PrimaryButton label="Log out" tone="outline" onPress={async () => { await logout(); router.replace('/login'); }} />
   </Screen>;
 }
 

@@ -13,6 +13,20 @@ export interface SignupResponse {
   createdAt: string;
 }
 
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  accessToken: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
+}
+
 export class ApiError extends Error {
   constructor(
     public readonly status: number,
@@ -51,4 +65,37 @@ export async function signup(data: SignupRequest): Promise<SignupResponse> {
   }
 
   return responseBody as SignupResponse;
+}
+
+export async function login(data: LoginRequest): Promise<LoginResponse> {
+  let response: Response;
+
+  try {
+    response = await fetch(`${apiBaseUrl}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+  } catch {
+    throw new Error('Unable to connect to SafePath. Check your connection and try again.');
+  }
+
+  let responseBody: { message?: string | string[] } | LoginResponse | undefined;
+  try {
+    responseBody = (await response.json()) as
+      | { message?: string | string[] }
+      | LoginResponse;
+  } catch {
+    responseBody = undefined;
+  }
+
+  if (!response.ok) {
+    const errorBody = responseBody as { message?: string | string[] } | undefined;
+    const message = Array.isArray(errorBody?.message)
+      ? errorBody.message.join(', ')
+      : errorBody?.message ?? 'Unable to sign in. Please try again.';
+    throw new ApiError(response.status, message);
+  }
+
+  return responseBody as LoginResponse;
 }

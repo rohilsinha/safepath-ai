@@ -33,18 +33,51 @@ model EmergencyContact {
 }
 
 model SafetyReport {
-  id          String         @id @default(uuid()) @db.Uuid
-  userId      String?        @db.Uuid
+  id          String                @id @default(uuid()) @db.Uuid
+  userId      String?               @db.Uuid
   latitude    Float
   longitude   Float
   description String
+  category    SafetyReportCategory  @default(OTHER)
   severity    ReportSeverity
-  createdAt   DateTime       @default(now())
-  user        User?          @relation(fields: [userId], references: [id])
+  occurredAt  DateTime?
+  status      SafetyReportStatus    @default(ACCEPTED)
+  reviewedAt  DateTime?
+  reviewNote  String?
+  deletedAt   DateTime?
+  createdAt   DateTime              @default(now())
+  user        User?                 @relation(fields: [userId], references: [id])
+  reviewAnalyses ReviewAnalysis[]
 
   @@index([userId])
   @@index([createdAt])
   @@index([severity, createdAt])
+  @@index([status, deletedAt, occurredAt])
+  @@index([status, deletedAt, latitude, longitude])
+}
+
+model ReviewAnalysis {
+  id                         String                @id @default(uuid()) @db.Uuid
+  safetyReportId             String                @db.Uuid
+  textHash                   String                @db.Char(64)
+  sentimentLabel             ReviewSentimentLabel?
+  /// Signed lexical polarity (-1 negative, 0 neutral, +1 positive), not a safety score.
+  sentimentScore             Float?
+  safetyRelevant             Boolean?
+  /// Heuristic support, not a calibrated probability.
+  sentimentConfidence        Float?
+  /// Heuristic support, not a calibrated probability.
+  safetyRelevanceConfidence  Float?
+  status                     ReviewAnalysisStatus  @default(PENDING)
+  modelName                  String
+  modelVersion               String
+  createdAt                  DateTime              @default(now())
+  updatedAt                  DateTime              @updatedAt
+  safetyReport               SafetyReport          @relation(fields: [safetyReportId], references: [id], onDelete: Cascade)
+
+  @@unique([safetyReportId, textHash, modelName, modelVersion], map: "ReviewAnalysis_report_text_model_key")
+  @@index([safetyReportId, createdAt], map: "ReviewAnalysis_report_created_idx")
+  @@index([status, updatedAt], map: "ReviewAnalysis_status_updated_idx")
 }
 
 model Sos {
@@ -66,6 +99,34 @@ enum ReportSeverity {
   MEDIUM
   HIGH
   CRITICAL
+}
+
+enum SafetyReportCategory {
+  HARASSMENT
+  UNSAFE_AREA
+  POOR_LIGHTING
+  SUSPICIOUS_ACTIVITY
+  OTHER
+}
+
+enum SafetyReportStatus {
+  ACCEPTED
+  APPROVED
+  REJECTED
+  FLAGGED
+}
+
+enum ReviewSentimentLabel {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+  UNCERTAIN
+}
+
+enum ReviewAnalysisStatus {
+  PENDING
+  COMPLETED
+  FAILED
 }
 
 enum SosStatus {

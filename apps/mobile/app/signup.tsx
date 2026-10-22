@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { router } from 'expo-router';
 import { Alert, View } from 'react-native';
 import { AppTitle, BackButton, Field, PrimaryButton, Screen } from '../src/components/ui';
-import { ApiError, signup } from '../src/api';
+import { ApiError, AuthRequestError, signup } from '../src/api';
 import { useUser } from '../src/user-context';
 
 export default function SignupScreen() {
@@ -20,11 +20,20 @@ export default function SignupScreen() {
       router.replace('/home');
     } catch (error) {
       if (error instanceof ApiError && error.status === 409) {
-        Alert.alert('Sign up failed', 'An account with this email already exists');
+        Alert.alert('Account already exists', 'An account with this email already exists.');
+      } else if (error instanceof ApiError && error.status === 400) {
+        Alert.alert('Check your details', error.message);
+      } else if (error instanceof AuthRequestError) {
+        Alert.alert(
+          error.reason === 'timeout' ? 'Connection timed out' : 'Connection problem',
+          error.message,
+        );
+      } else if (error instanceof ApiError) {
+        Alert.alert('Unable to create account', error.message);
       } else if (error instanceof Error) {
-        Alert.alert('Sign up failed', error.message);
+        Alert.alert('Unable to create account', error.message);
       } else {
-        Alert.alert('Sign up failed', 'Unable to create your account. Please try again.');
+        Alert.alert('Unable to create account', 'Please try again.');
       }
     } finally {
       setIsSubmitting(false);

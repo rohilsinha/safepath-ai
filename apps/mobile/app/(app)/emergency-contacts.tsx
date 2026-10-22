@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { AppTitle, BackButton, Card, PrimaryButton, Screen } from '../../src/components/ui';
-import { emergencyContacts } from '../../src/mock-data';
+import { emergencyContacts } from '../../src/emergency-contacts-data';
 import { colors } from '../../src/theme';
 
 export default function EmergencyContactsScreen() { return <Screen><BackButton onPress={() => router.back()} /><AppTitle eyebrow="Trusted people" title="Emergency contacts" subtitle="These sample contacts are not saved or notified yet." />

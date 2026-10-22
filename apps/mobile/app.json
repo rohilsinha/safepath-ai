@@ -5,7 +5,16 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      "@rnmapbox/maps",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow SafePath to use your location to calculate routes."
+        }
+      ]
+    ],
     "scheme": "safepath",
     "android": {
       "package": "com.safepath.mobile"

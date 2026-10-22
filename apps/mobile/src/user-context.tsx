@@ -31,26 +31,29 @@ export function UserProvider({ children }: { children: ReactNode }) {
     let active = true;
 
     const restoreSession = async (): Promise<void> => {
-      const accessToken = await getAccessToken();
-      if (!accessToken) {
-        if (active) setStatus('unauthenticated');
-        return;
-      }
-
+      let restored = false;
       try {
-        const restoredUser = await getCurrentUser(accessToken);
-        if (active) {
-          setAuthenticatedUser(restoredUser);
+        const accessToken = await getAccessToken();
+        if (accessToken) {
+          const restoredUser = await getCurrentUser(accessToken);
+          if (active) {
+            setAuthenticatedUser(restoredUser);
+            restored = true;
+          }
         }
       } catch (error) {
         if (error instanceof ApiError && error.status === 401) {
-          await removeAccessToken();
+          try {
+            await removeAccessToken();
+          } catch {
+            // Keep startup available; a later sign-in can replace an unreadable stale token.
+          }
         }
-
         if (active) {
           setUser(null);
-          setStatus('unauthenticated');
         }
+      } finally {
+        if (active && !restored) setStatus('unauthenticated');
       }
     };
 
